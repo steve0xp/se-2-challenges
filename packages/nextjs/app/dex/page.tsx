@@ -106,14 +106,14 @@ const Dex: NextPage = () => {
             <div className="py-3 px-4">
               <div className="flex mb-4 justify-center items-center">
                 <span className="w-1/2">
-                  ethToToken{" "}
+                  avaxToToken{" "}
                   <EtherInput
                     value={ethToTokenAmount}
                     onChange={value => {
                       setTokenToETHAmount("");
                       setEthToTokenAmount(value);
                     }}
-                    name="ethToToken"
+                    name="avaxToToken"
                   />
                 </span>
                 <button

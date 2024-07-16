@@ -11,6 +11,45 @@ There is also a 🎥 [Youtube video](https://www.youtube.com/watch?v=eP5w6Ger1EQ
 
 💬 Meet other builders working on this challenge and get help in the [Challenge 4 Telegram](https://t.me/+_NeUIJ664Tc1MzIx)
 
+---
+## Checkpoint AVALANCHE: 🏔🔺 Deploy your contract on a different network! 🛰
+
+🛰 This section is about deploying to a different network. I've added it here for now, but may move it elsewhere within the `README`. Please go through the rest of the challenge, but simply make sure your config files are set up as outlined in this section. That way you'll see it deployed to the Avalanche Fuji network, see it on scanners like snowscan for the testnet, and the front end will show AVAX once you connect your wallet (such as core wallet). Let's say we're going to deploy onto the Avalanche test network, Fuji.
+
+> The methods used here can be used to lauxnch on a different network though. Simply update the configs and `env` appropriately then go through the rest of the challenge after this checkpoint.
+
+The first step is to add the network, if it doesn't already exist, in `hardhat.config.ts`
+
+```
+    avalancheFuji: {
+      url: `https://avalanche-fuji.infura.io/v3/${providerApiKey}`,
+      accounts: [deployerPrivateKey],
+    }, 
+```
+
+> NOTE: For Avalanche, you can use a wallet such as the Core wallet. Simply export its private key for `DEPLOYER_PRIVATE_KEY` in your `.env`
+You'll need the API key for an end point to the Avalanche Testnet. Alchemy currently charges for the Avalanche Testnet, so you can just create an account and generate an API key with [Infura](https://app.infura.io/). Once you get your API key, just populate the variable `INFURA_API_KEY` in the `.env`.
+
+Now, make sure to:
+
+- Ensure you have enough $AVAX in your deployer wallet. If you don't have any, go to the AVAX academy or this [link](https://support.avax.network/en/articles/6110239-is-there-an-avax-faucet) and follow the steps to get some testnet AVAX. 
+- Replace the "front-end" address on line 53 in `00_deploy_your_contract.ts`. This will give you balloons, and your wallet will also provide $AVAX to initialize the DEX.
+
+With all that, you've now set up everything so you can simply run `yarn deploy` and your smart contracts for this challenge will be deployed.
+
+What we've done up to this point is update the config files for contract deployment. There are also config files to update so the front end of the SE-2 tech stack queries the proper network.
+
+> ✏️ Edit your frontend config in `packages/nextjs/scaffold.config.ts` to change the `targetNetwork` to `chains.avalancheFuji`.
+
+> Smart contract verification should be able to be done using the following commands, but it is not working right now. We need to troubleshoot this. See issues.
+You can verify your smart contract on Snowscan by running (`yarn verify --network network_name`) :
+
+```shell
+yarn verify --network avalancheFuji
+```
+
+---
+
 ## Checkpoint 0: 📦 Environment 📚
 
 Before you begin, you need to install the following tools:
