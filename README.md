@@ -224,3 +224,39 @@ yarn verify --network sepolia
 > 🏃 Head to your next challenge [here](https://github.com/scaffold-eth/se-2-challenges).
 
 > 💬 Problems, questions, comments on the stack? Post them to the [🏗 scaffold-eth developers chat](https://t.me/joinchat/F7nCRK3kI93PoCOk)
+
+---
+For running this on different networks:
+
+## Checkpoint 6: 💾 Deploy your contract on a different network! 🛰
+
+🛰 Ready to deploy to a different network?
+
+Let's say we're going to deploy onto the Avalanche test network, Fuji.
+
+The first step is to add the network, if it doesn't already exist, in `hardhat.config.ts`
+
+```
+    avalancheFuji: {
+      url: `https://avalanche-fuji.infura.io/v3/${providerApiKey}`,
+      accounts: [deployerPrivateKey],
+    }, 
+```
+
+> NOTE: For Avalanche, you can use a wallet such as the Core wallet. Simply export its private key for `DEPLOYER_PRIVATE_KEY` in your `.env`
+
+You'll need the API key for an end point to the Avalanche Testnet. Alchemy currently charges for the Avalanche Testnet, so you can just create an account and generate an API key with [Infura](https://app.infura.io/). Once you get your API key, just populate the variable `INFURA_API_KEY` in the `.env`.
+
+With all that, you've now set up everything so you can simply run `yarn deploy` and your smart contracts for this challenge will be deployed.
+
+What we've done up to this point is update the config files for contract deployment. There are also config files to update so the front end of the SE-2 tech stack queries the proper network.
+
+> ✏️ Edit your frontend config in `packages/nextjs/scaffold.config.ts` to change the `targetNetwork` to `chains.avalancheFuji`.
+
+> Smart contract verification should be able to be done using the following commands, but it is not working right now. We need to troubleshoot this. See issues.
+
+You can verify your smart contract on Snowscan by running (`yarn verify --network network_name`) :
+
+```shell
+yarn verify --network avalancheFuji
+```

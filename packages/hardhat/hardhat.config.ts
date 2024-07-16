@@ -30,7 +30,7 @@ const config: HardhatUserConfig = {
       },
     },
   },
-  defaultNetwork: "localhost",
+  defaultNetwork: "avalancheFuji",
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
@@ -118,6 +118,10 @@ const config: HardhatUserConfig = {
       url: "https://sepolia.publicgoods.network",
       accounts: [deployerPrivateKey],
     },
+    avalancheFuji: {
+      url: `https://avalanche-fuji.infura.io/v3/${providerApiKey}`,
+      accounts: [deployerPrivateKey],
+    }, //https://avalanche-fuji.infura.io/v3/be761fca97544702990d076dd79fbe22 
   },
   // configuration for harhdat-verify plugin
   etherscan: {
